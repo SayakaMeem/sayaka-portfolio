@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sayaka Alam — Software Developer & Data Analyst</title>
+  <meta name="description" content="Plain HTML/CSS/JavaScript reference version of the Sayaka Alam portfolio." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <a class="brand" href="#home"><span>SA</span><strong>Sayaka Alam</strong></a>
+    <nav><a href="#work">Work</a><a href="#data">Data & SQL</a><a href="#contact">Contact</a></nav>
+    <button id="themeToggle" type="button">Theme</button>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow">Software Developer · Data Analyst</p>
+        <h1>I build software and turn data into decisions.</h1>
+        <p class="lead">One professional profile for full-stack development and SQL-first analytical problem solving.</p>
+        <div class="actions"><a class="primary" href="#work">Selected work</a><a href="https://github.com/SayakaMeem">GitHub</a></div>
+      </div>
+      <figure><img src="sayaka-alam.jpg" alt="Sayaka Alam" /><figcaption>Software Developer · Data Analyst</figcaption></figure>
+    </section>
+
+    <section id="work">
+      <p class="eyebrow">Selected work</p>
+      <h2>Projects that show product, backend, database, and analytical range.</h2>
+      <div class="cards">
+        <article><span>Full stack</span><h3>Aura AI Fashion Engineering</h3><p>React + Express fashion styling dashboard with functional workflows and optional server-side AI image generation.</p></article>
+        <article><span>Data system</span><h3>Ethereum Heist System</h3><p>Python-led transaction analysis project with frontend, backend, data, and results layers.</p></article>
+        <article><span>SQL</span><h3>CRMS Database Project</h3><p>Relational design plus aggregation, joins, subqueries, CTEs, views, PL/SQL, and database automation concepts.</p></article>
+      </div>
+    </section>
+
+    <section id="data">
+      <p class="eyebrow">Data analyst mindset</p>
+      <h2>Question → SQL → validation → insight → decision.</h2>
+      <div class="data-grid">
+        <article><strong>01</strong><h3>Ask the business question</h3><p>Define what decision the analysis must support.</p></article>
+        <article><strong>02</strong><h3>Build the SQL evidence</h3><p>Use filters, joins, aggregation, subqueries, and CTEs to answer it directly.</p></article>
+        <article><strong>03</strong><h3>Explain the result</h3><p>State the pattern, exception, comparison, or risk clearly.</p></article>
+        <article><strong>04</strong><h3>Recommend an action</h3><p>Connect the evidence to a measurable next step.</p></article>
+      </div>
+      <pre><code>SELECT CustomerID, SUM(TotalAmount) AS TotalSpent
+FROM Orders
+GROUP BY CustomerID
+HAVING SUM(TotalAmount) &gt; 1000;</code></pre>
+    </section>
+
+    <section id="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Open to software development and data analyst opportunities.</h2>
+      <p>This reference page is intentionally static. The production Next.js application contains the live contact API and interactive analytics backend.</p>
+      <a class="primary" href="https://github.com/SayakaMeem">View GitHub</a>
+    </section>
+  </main>
+
+  <footer>© 2026 Sayaka Alam · Plain HTML/CSS/JS reference</footer>
+  <script src="app.js"></script>
+</body>
+</html>

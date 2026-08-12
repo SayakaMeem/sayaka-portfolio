@@ -1,0 +1,422 @@
+[
+  {
+    "orderId": "O1001",
+    "date": "2026-01-04",
+    "customerId": "C003",
+    "segment": "Consumer",
+    "region": "South",
+    "category": "Services",
+    "channel": "Web",
+    "revenue": 174.24
+  },
+  {
+    "orderId": "O1002",
+    "date": "2026-01-08",
+    "customerId": "C006",
+    "segment": "Consumer",
+    "region": "North",
+    "category": "Subscriptions",
+    "channel": "Partner",
+    "revenue": 158.4
+  },
+  {
+    "orderId": "O1003",
+    "date": "2026-01-12",
+    "customerId": "C009",
+    "segment": "Enterprise",
+    "region": "South",
+    "category": "Accessories",
+    "channel": "Direct",
+    "revenue": 497.25
+  },
+  {
+    "orderId": "O1004",
+    "date": "2026-01-16",
+    "customerId": "C012",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Software",
+    "channel": "Web",
+    "revenue": 572.67
+  },
+  {
+    "orderId": "O1005",
+    "date": "2026-01-20",
+    "customerId": "C003",
+    "segment": "Consumer",
+    "region": "South",
+    "category": "Services",
+    "channel": "Partner",
+    "revenue": 197.12
+  },
+  {
+    "orderId": "O1006",
+    "date": "2026-01-24",
+    "customerId": "C006",
+    "segment": "Consumer",
+    "region": "North",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 132.48
+  },
+  {
+    "orderId": "O1007",
+    "date": "2026-01-04",
+    "customerId": "C009",
+    "segment": "Enterprise",
+    "region": "South",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 569.08
+  },
+  {
+    "orderId": "O1008",
+    "date": "2026-02-05",
+    "customerId": "C005",
+    "segment": "Enterprise",
+    "region": "East",
+    "category": "Subscriptions",
+    "channel": "Partner",
+    "revenue": 679.51
+  },
+  {
+    "orderId": "O1009",
+    "date": "2026-02-09",
+    "customerId": "C008",
+    "segment": "Consumer",
+    "region": "West",
+    "category": "Accessories",
+    "channel": "Direct",
+    "revenue": 104.33
+  },
+  {
+    "orderId": "O1010",
+    "date": "2026-02-13",
+    "customerId": "C011",
+    "segment": "Consumer",
+    "region": "East",
+    "category": "Software",
+    "channel": "Web",
+    "revenue": 241.52
+  },
+  {
+    "orderId": "O1011",
+    "date": "2026-02-17",
+    "customerId": "C002",
+    "segment": "SMB",
+    "region": "East",
+    "category": "Services",
+    "channel": "Partner",
+    "revenue": 420.03
+  },
+  {
+    "orderId": "O1012",
+    "date": "2026-02-21",
+    "customerId": "C005",
+    "segment": "Enterprise",
+    "region": "East",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 783.44
+  },
+  {
+    "orderId": "O1013",
+    "date": "2026-02-25",
+    "customerId": "C008",
+    "segment": "Consumer",
+    "region": "West",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 118.46
+  },
+  {
+    "orderId": "O1014",
+    "date": "2026-02-05",
+    "customerId": "C011",
+    "segment": "Consumer",
+    "region": "East",
+    "category": "Software",
+    "channel": "Partner",
+    "revenue": 200.89
+  },
+  {
+    "orderId": "O1015",
+    "date": "2026-03-06",
+    "customerId": "C007",
+    "segment": "SMB",
+    "region": "South",
+    "category": "Accessories",
+    "channel": "Direct",
+    "revenue": 303.52
+  },
+  {
+    "orderId": "O1016",
+    "date": "2026-03-10",
+    "customerId": "C010",
+    "segment": "SMB",
+    "region": "North",
+    "category": "Software",
+    "channel": "Web",
+    "revenue": 506.78
+  },
+  {
+    "orderId": "O1017",
+    "date": "2026-03-14",
+    "customerId": "C001",
+    "segment": "Enterprise",
+    "region": "North",
+    "category": "Services",
+    "channel": "Partner",
+    "revenue": 947.81
+  },
+  {
+    "orderId": "O1018",
+    "date": "2026-03-18",
+    "customerId": "C004",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 428.5
+  },
+  {
+    "orderId": "O1019",
+    "date": "2026-03-22",
+    "customerId": "C007",
+    "segment": "SMB",
+    "region": "South",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 249.96
+  },
+  {
+    "orderId": "O1020",
+    "date": "2026-03-26",
+    "customerId": "C010",
+    "segment": "SMB",
+    "region": "North",
+    "category": "Software",
+    "channel": "Partner",
+    "revenue": 587.13
+  },
+  {
+    "orderId": "O1021",
+    "date": "2026-03-06",
+    "customerId": "C001",
+    "segment": "Enterprise",
+    "region": "North",
+    "category": "Services",
+    "channel": "Direct",
+    "revenue": 1080.3
+  },
+  {
+    "orderId": "O1022",
+    "date": "2026-04-07",
+    "customerId": "C009",
+    "segment": "Enterprise",
+    "region": "South",
+    "category": "Software",
+    "channel": "Web",
+    "revenue": 1146.12
+  },
+  {
+    "orderId": "O1023",
+    "date": "2026-04-11",
+    "customerId": "C012",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Services",
+    "channel": "Partner",
+    "revenue": 519.13
+  },
+  {
+    "orderId": "O1024",
+    "date": "2026-04-15",
+    "customerId": "C003",
+    "segment": "Consumer",
+    "region": "South",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 179.78
+  },
+  {
+    "orderId": "O1025",
+    "date": "2026-04-19",
+    "customerId": "C006",
+    "segment": "Consumer",
+    "region": "North",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 106.24
+  },
+  {
+    "orderId": "O1026",
+    "date": "2026-04-23",
+    "customerId": "C009",
+    "segment": "Enterprise",
+    "region": "South",
+    "category": "Software",
+    "channel": "Partner",
+    "revenue": 1315.44
+  },
+  {
+    "orderId": "O1027",
+    "date": "2026-04-03",
+    "customerId": "C012",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Services",
+    "channel": "Direct",
+    "revenue": 587.29
+  },
+  {
+    "orderId": "O1028",
+    "date": "2026-04-07",
+    "customerId": "C003",
+    "segment": "Consumer",
+    "region": "South",
+    "category": "Subscriptions",
+    "channel": "Web",
+    "revenue": 150.36
+  },
+  {
+    "orderId": "O1029",
+    "date": "2026-05-08",
+    "customerId": "C011",
+    "segment": "Consumer",
+    "region": "East",
+    "category": "Services",
+    "channel": "Partner",
+    "revenue": 218.06
+  },
+  {
+    "orderId": "O1030",
+    "date": "2026-05-12",
+    "customerId": "C002",
+    "segment": "SMB",
+    "region": "East",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 379.13
+  },
+  {
+    "orderId": "O1031",
+    "date": "2026-05-16",
+    "customerId": "C005",
+    "segment": "Enterprise",
+    "region": "East",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 625.87
+  },
+  {
+    "orderId": "O1032",
+    "date": "2026-05-20",
+    "customerId": "C008",
+    "segment": "Consumer",
+    "region": "West",
+    "category": "Software",
+    "channel": "Partner",
+    "revenue": 272.72
+  },
+  {
+    "orderId": "O1033",
+    "date": "2026-05-24",
+    "customerId": "C011",
+    "segment": "Consumer",
+    "region": "East",
+    "category": "Services",
+    "channel": "Direct",
+    "revenue": 180.68
+  },
+  {
+    "orderId": "O1034",
+    "date": "2026-05-04",
+    "customerId": "C002",
+    "segment": "SMB",
+    "region": "East",
+    "category": "Subscriptions",
+    "channel": "Web",
+    "revenue": 437.12
+  },
+  {
+    "orderId": "O1035",
+    "date": "2026-05-08",
+    "customerId": "C005",
+    "segment": "Enterprise",
+    "region": "East",
+    "category": "Accessories",
+    "channel": "Partner",
+    "revenue": 710.63
+  },
+  {
+    "orderId": "O1036",
+    "date": "2026-06-09",
+    "customerId": "C001",
+    "segment": "Enterprise",
+    "region": "North",
+    "category": "Subscriptions",
+    "channel": "Direct",
+    "revenue": 852.78
+  },
+  {
+    "orderId": "O1037",
+    "date": "2026-06-13",
+    "customerId": "C004",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Accessories",
+    "channel": "Web",
+    "revenue": 341.11
+  },
+  {
+    "orderId": "O1038",
+    "date": "2026-06-17",
+    "customerId": "C007",
+    "segment": "SMB",
+    "region": "South",
+    "category": "Software",
+    "channel": "Partner",
+    "revenue": 569.55
+  },
+  {
+    "orderId": "O1039",
+    "date": "2026-06-21",
+    "customerId": "C010",
+    "segment": "SMB",
+    "region": "North",
+    "category": "Services",
+    "channel": "Direct",
+    "revenue": 526.33
+  },
+  {
+    "orderId": "O1040",
+    "date": "2026-06-25",
+    "customerId": "C001",
+    "segment": "Enterprise",
+    "region": "North",
+    "category": "Subscriptions",
+    "channel": "Web",
+    "revenue": 974.61
+  },
+  {
+    "orderId": "O1041",
+    "date": "2026-06-05",
+    "customerId": "C004",
+    "segment": "SMB",
+    "region": "West",
+    "category": "Accessories",
+    "channel": "Partner",
+    "revenue": 280.92
+  },
+  {
+    "orderId": "O1042",
+    "date": "2026-06-09",
+    "customerId": "C007",
+    "segment": "SMB",
+    "region": "South",
+    "category": "Software",
+    "channel": "Direct",
+    "revenue": 659.85
+  }
+]
