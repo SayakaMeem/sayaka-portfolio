@@ -1,0 +1,2486 @@
+.immersiveRoot {
+  --scene-purple: #8b5cf6;
+  --scene-cyan: #22d3ee;
+  --scene-blue: #4f7cff;
+  --scene-pink: #ec4899;
+  --scene-green: #34d399;
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background:
+    radial-gradient(circle at 72% 9%, rgba(139, 92, 246, 0.08), transparent 28%),
+    radial-gradient(circle at 18% 38%, rgba(34, 211, 238, 0.055), transparent 24%);
+}
+
+:global(html[data-theme="light"]) .immersiveRoot {
+  --scene-purple: #7657ff;
+  --scene-cyan: #0891b2;
+  --scene-blue: #3867ff;
+  --scene-pink: #db2777;
+  --scene-green: #059669;
+}
+
+.ambientBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(109, 77, 255, 0.12), transparent 36%),
+    linear-gradient(180deg, rgba(9, 10, 20, 0.02), transparent 32%);
+}
+
+.ambientBackdrop::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  opacity: .34;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.82) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(34,211,238,.62) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(139,92,246,.62) 0 1.2px, transparent 1.8px);
+  background-size: 86px 86px, 132px 132px, 178px 178px;
+  background-position: 0 0, 34px 20px, 70px 55px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 88%);
+  animation: particleDrift 24s linear infinite;
+}
+
+.ambientBackdrop::after {
+  content: "";
+  position: absolute;
+  width: 52vw;
+  height: 150vh;
+  left: -18vw;
+  top: -25vh;
+  transform: rotate(18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(34,211,238,.055),
+    rgba(139,92,246,.075),
+    transparent
+  );
+  filter: blur(30px);
+  animation: lightSweep 14s ease-in-out infinite alternate;
+}
+
+@keyframes particleDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(42px, -70px, 0); }
+}
+
+@keyframes lightSweep {
+  from { transform: translate3d(-6vw, 0, 0) rotate(18deg); opacity: .5; }
+  to { transform: translate3d(72vw, 5vh, 0) rotate(18deg); opacity: .95; }
+}
+
+:global(html[data-theme="light"]) .ambientBackdrop {
+  background:
+    radial-gradient(circle at 50% -10%, rgba(100, 89, 255, 0.11), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 32%);
+}
+
+.auroraOne,
+.auroraTwo {
+  position: absolute;
+  width: min(58vw, 820px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(85px);
+  opacity: 0.16;
+  will-change: transform;
+}
+
+.auroraOne {
+  top: -18%;
+  right: -13%;
+  background: conic-gradient(
+    from 40deg,
+    var(--scene-purple),
+    var(--scene-cyan),
+    var(--scene-blue),
+    var(--scene-purple)
+  );
+  animation: auroraDriftOne 18s ease-in-out infinite alternate;
+}
+
+.auroraTwo {
+  left: -22%;
+  top: 38%;
+  background: conic-gradient(
+    from 160deg,
+    var(--scene-cyan),
+    var(--scene-pink),
+    var(--scene-purple),
+    var(--scene-cyan)
+  );
+  opacity: 0.1;
+  animation: auroraDriftTwo 22s ease-in-out infinite alternate;
+}
+
+.perspectiveGrid {
+  position: absolute;
+  width: 130vw;
+  height: 70vh;
+  left: -15vw;
+  top: 54vh;
+  opacity: 0.08;
+  transform-origin: 50% 0;
+  transform: perspective(650px) rotateX(68deg) translateY(-5%);
+  background-image:
+    linear-gradient(rgba(125, 120, 255, 0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 210, 255, 0.45) 1px, transparent 1px);
+  background-size: 58px 58px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent 82%);
+}
+
+
+.securityMesh {
+  position: absolute;
+  inset: 0;
+  opacity: .11;
+  background:
+    linear-gradient(90deg, transparent 49.7%, rgba(34,211,238,.30) 50%, transparent 50.3%),
+    linear-gradient(transparent 49.7%, rgba(139,92,246,.24) 50%, transparent 50.3%);
+  background-size: 180px 180px;
+  mask-image: radial-gradient(circle at 62% 22%, black 0 12%, transparent 58%);
+  animation: securityMeshPulse 8s ease-in-out infinite alternate;
+}
+
+.scanBeam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -12%;
+  height: 1px;
+  opacity: .0;
+  background: linear-gradient(90deg, transparent, rgba(52,211,153,.75), rgba(34,211,238,.55), transparent);
+  box-shadow: 0 0 22px rgba(52,211,153,.22);
+  animation: securityScan 9s ease-in-out infinite;
+}
+
+.engineeringRail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 18px;
+  max-width: 690px;
+}
+
+.engineeringRail span {
+  min-width: 0;
+  display: grid;
+  gap: 3px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,.10);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+:global(html[data-theme="light"]) .engineeringRail span {
+  border-color: rgba(76,73,120,.12);
+  background: rgba(255,255,255,.54);
+}
+
+.engineeringRail small {
+  font-size: 8px;
+  letter-spacing: .14em;
+  color: var(--scene-cyan);
+}
+
+.engineeringRail strong {
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tileSecurity {
+  right: 2%;
+  bottom: 8%;
+  transform: translateZ(168px) rotateZ(-2deg);
+  border-color: rgba(52,211,153,.28);
+}
+
+.tileSecurity::before {
+  background: radial-gradient(circle, rgba(52,211,153,.28), transparent 68%);
+}
+
+:global(.section[id]) {
+  scroll-margin-top: 96px;
+}
+
+@keyframes securityMeshPulse {
+  from { opacity: .06; transform: scale(1); }
+  to { opacity: .15; transform: scale(1.025); }
+}
+
+@keyframes securityScan {
+  0%, 12% { top: 0%; opacity: 0; }
+  20% { opacity: .55; }
+  72% { opacity: .22; }
+  85%, 100% { top: 96%; opacity: 0; }
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.032;
+  background-image:
+    radial-gradient(circle at 20% 20%, currentColor 0 0.6px, transparent 0.8px),
+    radial-gradient(circle at 80% 40%, currentColor 0 0.5px, transparent 0.7px);
+  background-size: 9px 11px, 13px 15px;
+  mix-blend-mode: soft-light;
+}
+
+.mainDepth {
+  position: relative;
+  z-index: 1;
+}
+
+.glassHeader {
+  backdrop-filter: blur(22px) saturate(135%);
+  -webkit-backdrop-filter: blur(22px) saturate(135%);
+}
+
+.heroStage {
+  position: relative;
+  perspective: 1600px;
+  min-height: min(820px, calc(100vh - 70px));
+}
+
+.sceneShell {
+  position: relative;
+  min-height: 570px;
+  perspective: 1600px;
+  display: grid;
+  place-items: center;
+  padding: 18px 8px 34px;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.scene3d {
+  position: relative;
+  width: min(100%, 610px);
+  height: 535px;
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  will-change: transform;
+}
+
+.sceneGlow {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 68%;
+  aspect-ratio: 1;
+  transform: translate3d(-50%, -50%, -90px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,.34), transparent 16%),
+    radial-gradient(circle, rgba(124,92,255,.35), rgba(34,211,238,.16) 43%, transparent 70%);
+  filter: blur(18px);
+  opacity: .9;
+}
+
+.coreOrb {
+  position: absolute;
+  width: 310px;
+  aspect-ratio: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, -20px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 31% 27%, rgba(255,255,255,.92) 0 2%, rgba(255,255,255,.25) 3%, transparent 12%),
+    radial-gradient(circle at 35% 30%, #98f6ff 0%, #56bff7 13%, #7158ff 42%, #1a1743 70%, #070912 100%);
+  box-shadow:
+    inset -35px -38px 70px rgba(0,0,0,.38),
+    inset 22px 15px 46px rgba(255,255,255,.18),
+    0 0 75px rgba(111, 86, 255, .38),
+    0 0 160px rgba(34, 211, 238, .14);
+}
+
+.coreOrb::after {
+  content: "";
+  position: absolute;
+  inset: 13%;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: inset 0 0 38px rgba(255,255,255,.09);
+}
+
+.orbitRing {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(131, 123, 255, 0.36);
+  border-radius: 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+
+.orbitRing::before,
+.orbitRing::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--scene-cyan);
+  box-shadow: 0 0 18px rgba(34, 211, 238, .85);
+}
+
+.orbitRing::before {
+  left: 15%;
+  top: 7%;
+}
+
+.orbitRing::after {
+  right: 7%;
+  bottom: 20%;
+  background: var(--scene-purple);
+  box-shadow: 0 0 18px rgba(139, 92, 246, .8);
+}
+
+.orbitRingOne {
+  width: 435px;
+  height: 275px;
+  transform: translate3d(-50%, -50%, 10px) rotateX(68deg) rotateZ(12deg);
+  animation: spinOrbitOne 15s linear infinite;
+}
+
+.orbitRingTwo {
+  width: 360px;
+  height: 455px;
+  transform: translate3d(-50%, -50%, -5px) rotateY(66deg) rotateZ(-18deg);
+  animation: spinOrbitTwo 19s linear infinite reverse;
+}
+
+.orbitRingThree {
+  width: 490px;
+  height: 365px;
+  transform: translate3d(-50%, -50%, -45px) rotateX(36deg) rotateY(24deg) rotateZ(35deg);
+  opacity: .55;
+  animation: spinOrbitThree 25s linear infinite;
+}
+
+.portraitPanel {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  width: min(66%, 370px);
+  min-width: 270px;
+  transform: translate3d(-50%, -50%, 135px);
+  transform-style: preserve-3d;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+  animation: portraitFloat 5.8s ease-in-out infinite;
+}
+
+:global(html[data-theme="light"]) .portraitPanel {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.portraitPanel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 112%;
+  aspect-ratio: 1;
+  transform: translate3d(-50%, -50%, -24px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(34, 211, 238, .18), rgba(139, 92, 246, .10) 42%, transparent 70%);
+  filter: blur(22px);
+  pointer-events: none;
+  animation: portraitAura 4.8s ease-in-out infinite alternate;
+}
+
+.portraitTop {
+  position: absolute;
+  z-index: 5;
+  top: -28px;
+  left: 50%;
+  width: min(92%, 310px);
+  transform: translateX(-50%) translateZ(44px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 999px;
+  background: rgba(9, 13, 24, .48);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-size: 9px;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  opacity: .82;
+}
+
+:global(html[data-theme="light"]) .portraitTop {
+  background: rgba(255,255,255,.58);
+  border-color: rgba(80,70,140,.14);
+}
+
+.portraitTop i {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 5px;
+  border-radius: 50%;
+  background: var(--scene-green);
+  box-shadow: 0 0 12px rgba(52, 211, 153, .9);
+}
+
+.portraitImage {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 340px);
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,.04);
+  transform: translateZ(34px);
+  border: 2px solid rgba(120, 235, 255, .36);
+  box-shadow:
+    0 0 0 8px rgba(255,255,255,.035),
+    0 30px 80px rgba(0,0,0,.38),
+    0 0 70px rgba(34,211,238,.17),
+    0 0 120px rgba(139,92,246,.10);
+  transition:
+    transform .48s cubic-bezier(.2,.8,.2,1),
+    box-shadow .48s ease,
+    border-color .48s ease;
+}
+
+.portraitImage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    transparent 28%,
+    rgba(255,255,255,.22) 46%,
+    transparent 62%
+  );
+  transform: translateX(-135%);
+  animation: circularSheen 5.8s ease-in-out infinite;
+}
+
+.portraitImage img {
+  object-fit: cover;
+  object-position: 52% 38%;
+  transform: scale(1.035);
+  transition: transform .55s cubic-bezier(.2,.8,.2,1);
+}
+
+.portraitPanel:hover .portraitImage {
+  transform: translateZ(52px) scale(1.045);
+  border-color: rgba(125, 245, 255, .72);
+  box-shadow:
+    0 0 0 10px rgba(255,255,255,.05),
+    0 38px 105px rgba(0,0,0,.46),
+    0 0 95px rgba(34,211,238,.30),
+    0 0 160px rgba(139,92,246,.18);
+}
+
+.portraitPanel:hover .portraitImage img {
+  transform: scale(1.10);
+}
+
+.portraitMeta {
+  position: relative;
+  z-index: 5;
+  width: min(92%, 310px);
+  margin: 14px auto 0;
+  transform: translateZ(46px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  background: rgba(9, 13, 24, .46);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+:global(html[data-theme="light"]) .portraitMeta {
+  background: rgba(255,255,255,.58);
+  border-color: rgba(80,70,140,.14);
+}
+
+.portraitMeta div {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.portraitMeta strong {
+  font-size: 13px;
+}
+
+.portraitMeta div span {
+  font-size: 10px;
+  opacity: .62;
+}
+
+.liveDot {
+  border: 1px solid rgba(52, 211, 153, .28);
+  border-radius: 999px;
+  padding: 5px 8px;
+  color: var(--scene-green);
+  font-size: 8px;
+  letter-spacing: .08em;
+  background: rgba(52, 211, 153, .08);
+}
+
+@keyframes portraitFloat {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -12px; }
+}
+
+@keyframes portraitAura {
+  from { opacity: .62; transform: translate3d(-50%, -50%, -24px) scale(.94); }
+  to { opacity: 1; transform: translate3d(-50%, -50%, -24px) scale(1.08); }
+}
+
+@keyframes circularSheen {
+  0%, 58% { transform: translateX(-135%); }
+  78%, 100% { transform: translateX(135%); }
+}
+
+.floatingTile {
+  position: absolute;
+  z-index: 3;
+  width: 145px;
+  padding: 13px 14px;
+  border: 1px solid rgba(255,255,255,.17);
+  border-radius: 18px;
+  display: grid;
+  gap: 2px;
+  background: linear-gradient(145deg, rgba(18, 20, 39, .76), rgba(18, 20, 39, .34));
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.26),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transform-style: preserve-3d;
+}
+
+:global(html[data-theme="light"]) .floatingTile {
+  background: linear-gradient(145deg, rgba(255,255,255,.86), rgba(246,247,255,.56));
+  border-color: rgba(69, 62, 135, .16);
+  box-shadow: 0 18px 45px rgba(73, 68, 125, .14);
+}
+
+.floatingTile span {
+  font-size: 9px;
+  letter-spacing: .16em;
+  color: var(--scene-cyan);
+}
+
+.floatingTile strong {
+  font-size: 17px;
+  line-height: 1.15;
+}
+
+.floatingTile small {
+  font-size: 10px;
+  opacity: .58;
+}
+
+.tileCode {
+  left: 2%;
+  top: 16%;
+  transform: translateZ(185px) rotateZ(-4deg);
+}
+
+.tileData {
+  right: -1%;
+  top: 25%;
+  transform: translateZ(210px) rotateZ(3deg);
+}
+
+.tilePython {
+  left: 6%;
+  bottom: 11%;
+  transform: translateZ(155px) rotateZ(2deg);
+}
+
+.depthDot {
+  position: absolute;
+  width: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--scene-cyan);
+  box-shadow: 0 0 16px rgba(34,211,238,.7);
+}
+
+.dotOne {
+  right: 13%;
+  bottom: 10%;
+  transform: translateZ(240px);
+}
+
+.dotTwo {
+  right: 8%;
+  top: 12%;
+  width: 5px;
+  transform: translateZ(90px);
+  background: var(--scene-pink);
+  box-shadow: 0 0 15px rgba(236,72,153,.75);
+}
+
+.dotThree {
+  left: 20%;
+  top: 6%;
+  width: 6px;
+  transform: translateZ(30px);
+  background: var(--scene-purple);
+  box-shadow: 0 0 16px rgba(139,92,246,.75);
+}
+
+.sceneHint {
+  margin: -4px 0 0;
+  font-size: 11px;
+  letter-spacing: .06em;
+  opacity: .46;
+  text-align: center;
+}
+
+.depthCard {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --shine-x: 50%;
+  --shine-y: 50%;
+  position: relative;
+  transform-style: preserve-3d;
+  transform:
+    perspective(1200px)
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y));
+  transition:
+    transform 180ms ease-out,
+    box-shadow 280ms ease,
+    border-color 280ms ease !important;
+  will-change: transform;
+  isolation: isolate;
+}
+
+.depthCard::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background:
+    radial-gradient(
+      circle at var(--shine-x) var(--shine-y),
+      rgba(255,255,255,.22),
+      rgba(118, 91, 255, .08) 19%,
+      transparent 46%
+    );
+  transition: opacity 200ms ease;
+  mix-blend-mode: screen;
+}
+
+.depthCard:hover {
+  transform:
+    perspective(1200px)
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y))
+    translateY(-9px)
+    scale(1.012) !important;
+  box-shadow:
+    0 28px 65px rgba(0,0,0,.22),
+    0 0 0 1px rgba(125, 105, 255, .12) !important;
+}
+
+.depthCard:hover::before {
+  opacity: 1;
+}
+
+.staticDepth {
+  position: relative;
+  transform: perspective(1400px) translateZ(0);
+  transition: transform 300ms cubic-bezier(.2,.8,.2,1), box-shadow 300ms ease !important;
+}
+
+.staticDepth:hover {
+  transform: perspective(1400px) translateZ(18px) translateY(-7px) rotateX(1deg) !important;
+}
+
+:global(.featured-visual),
+:global(.project-symbol),
+:global(.repo-symbol),
+:global(.skill-icon),
+:global(.role-icon) {
+  transform-style: preserve-3d;
+}
+
+:global(.featured-card:hover .featured-visual) {
+  transform: translateZ(24px);
+}
+
+:global(.featured-card:hover .project-symbol),
+:global(.repository-card:hover .repo-symbol),
+:global(.skill-card:hover .skill-icon),
+:global(.role-card:hover .role-icon) {
+  transform: translateZ(34px) scale(1.06);
+}
+
+@keyframes auroraDriftOne {
+  from { transform: translate3d(-6%, -3%, 0) rotate(-8deg) scale(.96); }
+  to { transform: translate3d(10%, 8%, 0) rotate(14deg) scale(1.08); }
+}
+
+@keyframes auroraDriftTwo {
+  from { transform: translate3d(0, 0, 0) rotate(8deg) scale(.95); }
+  to { transform: translate3d(16%, -8%, 0) rotate(-13deg) scale(1.08); }
+}
+
+@keyframes spinOrbitOne {
+  from { transform: translate3d(-50%, -50%, 10px) rotateX(68deg) rotateZ(0deg); }
+  to { transform: translate3d(-50%, -50%, 10px) rotateX(68deg) rotateZ(360deg); }
+}
+
+@keyframes spinOrbitTwo {
+  from { transform: translate3d(-50%, -50%, -5px) rotateY(66deg) rotateZ(-18deg); }
+  to { transform: translate3d(-50%, -50%, -5px) rotateY(66deg) rotateZ(342deg); }
+}
+
+@keyframes spinOrbitThree {
+  from { transform: translate3d(-50%, -50%, -45px) rotateX(36deg) rotateY(24deg) rotateZ(35deg); }
+  to { transform: translate3d(-50%, -50%, -45px) rotateX(36deg) rotateY(24deg) rotateZ(395deg); }
+}
+
+@keyframes cardSheen {
+  0%, 62% { transform: translateX(-135%); opacity: 0; }
+  72% { opacity: .65; }
+  88%, 100% { transform: translateX(135%); opacity: 0; }
+}
+
+@media (max-width: 1050px) {
+  .sceneShell {
+    min-height: 520px;
+  }
+
+  .scene3d {
+    width: min(100%, 540px);
+    height: 500px;
+  }
+
+  .coreOrb {
+    width: 280px;
+  }
+
+  .orbitRingOne {
+    width: 390px;
+  }
+
+  .orbitRingThree {
+    width: 430px;
+  }
+
+  .portraitImage {
+    width: min(100%, 310px);
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  .floatingTile {
+    width: 132px;
+  }
+}
+
+
+@media (max-width: 1050px) {
+  .engineeringRail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .heroStage {
+    perspective: none;
+  }
+
+  .sceneShell {
+    min-height: 520px;
+    padding-inline: 0;
+  }
+
+  .scene3d {
+    width: min(100%, 430px);
+    height: 490px;
+  }
+
+  .coreOrb {
+    width: 245px;
+  }
+
+  .portraitPanel {
+    width: 64%;
+    min-width: 235px;
+    transform: translate3d(-50%, -50%, 80px);
+  }
+
+  .portraitImage {
+    width: min(100%, 285px);
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  .orbitRingOne {
+    width: 340px;
+    height: 220px;
+  }
+
+  .orbitRingTwo {
+    width: 290px;
+    height: 370px;
+  }
+
+  .orbitRingThree {
+    width: 390px;
+    height: 300px;
+  }
+
+  .floatingTile {
+    width: 118px;
+    padding: 10px 11px;
+  }
+
+  .tileCode {
+    left: -1%;
+    top: 10%;
+  }
+
+  .tileData {
+    right: -2%;
+    top: 29%;
+  }
+
+  .tilePython {
+    left: 1%;
+    bottom: 8%;
+  }
+
+  .tileSecurity {
+    right: 0;
+    bottom: 7%;
+  }
+
+  .engineeringRail {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+  }
+
+  .floatingTile strong {
+    font-size: 14px;
+  }
+
+  .sceneHint {
+    display: none;
+  }
+
+  .perspectiveGrid {
+    opacity: .045;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneShell {
+    min-height: 450px;
+  }
+
+  .scene3d {
+    height: 430px;
+  }
+
+  .coreOrb {
+    width: 205px;
+  }
+
+  .portraitPanel {
+    width: 72%;
+    min-width: 210px;
+    border-radius: 999px;
+  }
+
+  .portraitImage {
+    width: min(100%, 245px);
+    aspect-ratio: 1;
+    height: auto;
+  }
+
+  .portraitMeta div span {
+    display: none;
+  }
+
+  .orbitRingOne {
+    width: 300px;
+    height: 190px;
+  }
+
+  .orbitRingTwo {
+    width: 255px;
+    height: 330px;
+  }
+
+  .orbitRingThree {
+    width: 340px;
+    height: 260px;
+  }
+
+  .floatingTile {
+    width: 104px;
+  }
+
+  .tilePython,
+  .tileSecurity {
+    display: none;
+  }
+
+  .engineeringRail {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+
+  .engineeringRail span {
+    padding: 8px 9px;
+  }
+
+  .depthCard:hover {
+    transform: translateY(-5px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auroraOne,
+  .auroraTwo,
+  .orbitRing,
+  .portraitPanel::after {
+    animation: none !important;
+  }
+
+  .scene3d,
+  .depthCard,
+  .staticDepth {
+    transform: none !important;
+  }
+
+  .depthCard,
+  .staticDepth {
+    transition: none !important;
+  }
+
+  .depthCard::before {
+    display: none;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .ambientBackdrop::before,
+  .ambientBackdrop::after,
+  .securityMesh,
+  .scanBeam,
+  .portraitPanel,
+  .portraitPanel::after,
+  .portraitImage::before {
+    animation: none !important;
+  }
+}
+
+
+/* =========================================================
+   PROFILE SCENE V3.1 — NON-OVERLAPPING IDENTITIES
+   Keeps every floating label in its own quadrant.
+========================================================= */
+
+.sceneShell {
+  min-height: 640px;
+  padding: 20px 8px 44px;
+}
+
+.scene3d {
+  width: min(100%, 660px);
+  height: 600px;
+}
+
+.portraitPanel {
+  top: 46%;
+  width: min(58%, 350px);
+  min-width: 300px;
+}
+
+.portraitImage {
+  width: min(100%, 335px);
+}
+
+.portraitTop {
+  top: -42px;
+  width: 270px;
+  min-height: 34px;
+  background: rgba(8, 13, 27, .84);
+  border-color: rgba(103, 232, 249, .22);
+  box-shadow: 0 10px 34px rgba(0,0,0,.24);
+  opacity: 1;
+}
+
+.portraitMeta {
+  width: 286px;
+  margin-top: 18px;
+  min-height: 54px;
+  justify-content: space-between;
+  padding: 10px 12px 10px 14px;
+  background: rgba(8, 13, 27, .88);
+  border-color: rgba(255,255,255,.16);
+  box-shadow: 0 14px 38px rgba(0,0,0,.27);
+}
+
+.portraitMeta strong {
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.portraitMeta div span {
+  font-size: 9px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+
+.liveDot {
+  flex: 0 0 auto;
+  padding: 6px 9px;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: .10em;
+  background: rgba(52, 211, 153, .12);
+}
+
+/* Shared tile readability */
+.floatingTile {
+  width: 154px;
+  min-height: 84px;
+  padding: 13px 15px;
+  gap: 4px;
+  background: rgba(7, 12, 26, .90);
+  border-color: rgba(255,255,255,.18);
+  box-shadow:
+    0 18px 44px rgba(0,0,0,.32),
+    inset 0 1px 0 rgba(255,255,255,.10);
+  opacity: 1;
+}
+
+.floatingTile span {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.floatingTile strong {
+  font-size: 16px;
+  line-height: 1.08;
+}
+
+.floatingTile small {
+  font-size: 9px;
+  line-height: 1.25;
+  opacity: .76;
+}
+
+/* One identity = one corner */
+.tileCode {
+  left: 0;
+  top: 13%;
+  transform: translateZ(190px) rotateZ(-3deg);
+  border-color: rgba(34,211,238,.34);
+}
+.tileCode span { color: #56e7f4; }
+
+.tileData {
+  right: 0;
+  top: 13%;
+  transform: translateZ(200px) rotateZ(3deg);
+  border-color: rgba(139,92,246,.38);
+}
+.tileData span { color: #b79cff; }
+
+.tilePython {
+  left: 0;
+  bottom: 4%;
+  transform: translateZ(175px) rotateZ(2deg);
+  border-color: rgba(96,165,250,.40);
+}
+.tilePython span { color: #7db8ff; }
+
+.tileSecurity {
+  right: 0;
+  bottom: 4%;
+  transform: translateZ(182px) rotateZ(-2deg);
+  border-color: rgba(52,211,153,.42);
+}
+.tileSecurity span { color: #5ee6a8; }
+
+/* Give the central portrait clean breathing room */
+.sceneGlow {
+  width: 61%;
+}
+
+.coreOrb {
+  width: 285px;
+  opacity: .78;
+}
+
+.orbitRingOne {
+  width: 410px;
+  height: 258px;
+}
+
+.orbitRingTwo {
+  width: 335px;
+  height: 440px;
+}
+
+.orbitRingThree {
+  width: 475px;
+  height: 350px;
+}
+
+:global(html[data-theme="light"]) .portraitTop,
+:global(html[data-theme="light"]) .portraitMeta,
+:global(html[data-theme="light"]) .floatingTile {
+  background: rgba(255,255,255,.90);
+}
+
+/* Tablet: preserve separation instead of piling cards over the portrait */
+@media (max-width: 900px) {
+  .sceneShell {
+    min-height: 610px;
+  }
+
+  .scene3d {
+    width: min(100%, 560px);
+    height: 570px;
+  }
+
+  .portraitPanel {
+    width: min(58%, 320px);
+    min-width: 280px;
+  }
+
+  .portraitImage {
+    width: min(100%, 310px);
+  }
+
+  .floatingTile {
+    width: 135px;
+    min-height: 76px;
+    padding: 11px 12px;
+  }
+
+  .tileCode { left: 0; top: 12%; }
+  .tileData { right: 0; top: 12%; }
+  .tilePython { left: 0; bottom: 5%; }
+  .tileSecurity { right: 0; bottom: 5%; }
+}
+
+/* Phone: turn 3D badges into a clean 2x2 identity grid below the portrait */
+@media (max-width: 760px) {
+  .sceneShell {
+    min-height: 720px;
+    padding-bottom: 24px;
+  }
+
+  .scene3d {
+    width: min(100%, 430px);
+    height: 690px;
+  }
+
+  .portraitPanel {
+    top: 34%;
+    width: 68%;
+    min-width: 245px;
+  }
+
+  .portraitImage {
+    width: min(100%, 285px);
+  }
+
+  .portraitMeta {
+    width: min(94%, 270px);
+  }
+
+  .portraitTop {
+    width: min(90%, 250px);
+  }
+
+  .floatingTile {
+    width: calc(50% - 12px);
+    min-height: 78px;
+  }
+
+  .tileCode {
+    left: 0;
+    top: auto;
+    bottom: 98px;
+  }
+
+  .tileData {
+    right: 0;
+    top: auto;
+    bottom: 98px;
+  }
+
+  .tilePython {
+    left: 0;
+    bottom: 8px;
+  }
+
+  .tileSecurity {
+    right: 0;
+    bottom: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneShell {
+    min-height: 690px;
+  }
+
+  .scene3d {
+    height: 655px;
+  }
+
+  .portraitPanel {
+    top: 31%;
+    width: 72%;
+    min-width: 225px;
+  }
+
+  .portraitImage {
+    width: min(100%, 255px);
+  }
+
+  .portraitMeta {
+    width: min(96%, 255px);
+  }
+
+  .portraitMeta div span {
+    display: block;
+    font-size: 8px;
+  }
+
+  .floatingTile {
+    display: grid !important;
+    width: calc(50% - 8px);
+    min-height: 72px;
+    padding: 10px;
+  }
+
+  .floatingTile strong {
+    font-size: 14px;
+  }
+
+  .floatingTile small {
+    font-size: 8px;
+  }
+
+  .tileCode,
+  .tileData {
+    bottom: 88px;
+  }
+
+  .tilePython,
+  .tileSecurity {
+    bottom: 8px;
+  }
+}
+
+
+/* =========================================================
+   V4 — SECTION ENTRANCE + MORE ATTRACTIVE TOOL VISUALS
+========================================================= */
+
+:global(.section) {
+  scroll-margin-top: 110px;
+}
+
+:global(.section-heading h2) {
+  letter-spacing: -0.03em;
+}
+
+:global(.section-border) {
+  position: relative;
+  overflow: hidden;
+}
+
+:global(.section-border)::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(90,228,255,.26), rgba(155,118,255,.24), transparent);
+  pointer-events: none;
+}
+
+:global(.featured-card),
+:global(.repository-card),
+:global(.skill-card),
+:global(.role-card),
+:global(.analytics-panel),
+:global(.decision-card),
+:global(.sql-evidence-card),
+:global(.data-proof-grid article),
+:global(.contact-form),
+:global(.contact-copy) {
+  transition:
+    transform .34s cubic-bezier(.2,.8,.2,1),
+    box-shadow .34s ease,
+    border-color .34s ease,
+    background .34s ease;
+}
+
+:global(.featured-card:hover),
+:global(.repository-card:hover),
+:global(.skill-card:hover),
+:global(.role-card:hover),
+:global(.analytics-panel:hover),
+:global(.decision-card:hover),
+:global(.sql-evidence-card:hover),
+:global(.data-proof-grid article:hover) {
+  transform: translateY(-10px);
+  box-shadow:
+    0 22px 54px rgba(0,0,0,.18),
+    0 0 0 1px rgba(106,236,255,.14);
+  border-color: rgba(106,236,255,.26);
+}
+
+:global(.tag-row span),
+:global(.tech-stack span),
+:global(.compact-tags span) {
+  transition:
+    transform .24s ease,
+    box-shadow .24s ease,
+    border-color .24s ease,
+    background .24s ease;
+}
+
+:global(.tag-row span:hover),
+:global(.tech-stack span:hover),
+:global(.compact-tags span:hover) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(66, 196, 255, .10);
+  border-color: rgba(103, 232, 249, .28);
+}
+
+/* Tools / floating identity cards */
+.floatingTile {
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.floatingTile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.06), transparent 35%, rgba(255,255,255,.03) 68%, transparent);
+  pointer-events: none;
+}
+
+.floatingTile::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -26px -20px;
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  filter: blur(22px);
+  opacity: .7;
+  pointer-events: none;
+}
+
+.tileCode::after { background: rgba(34, 211, 238, .22); }
+.tileData::after { background: rgba(139, 92, 246, .22); }
+.tilePython::after { background: rgba(96, 165, 250, .22); }
+.tileSecurity::after { background: rgba(52, 211, 153, .22); }
+
+.floatingTile strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.floatingTile small {
+  max-width: 13ch;
+}
+
+.portraitMeta,
+.portraitTop {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.sceneHint {
+  margin-top: 16px;
+  opacity: .7;
+  letter-spacing: .04em;
+}
+
+/* More attractive tool cards on small screens too */
+@media (max-width: 760px) {
+  .floatingTile {
+    box-shadow:
+      0 16px 34px rgba(0,0,0,.24),
+      inset 0 1px 0 rgba(255,255,255,.10);
+  }
+}
+
+
+/* =========================================================
+   V5 FINAL — SMALLER PORTRAIT + ALWAYS-VISIBLE ANCHOR SECTIONS
+========================================================= */
+
+.sceneShell {
+  min-height: 680px;
+  padding: 28px 16px 48px;
+}
+
+.scene3d {
+  width: min(100%, 720px);
+  height: 620px;
+}
+
+.portraitPanel {
+  top: 44%;
+  width: min(50%, 300px);
+  min-width: 260px;
+}
+
+.portraitImage {
+  width: min(100%, 290px);
+  border-width: 2px;
+}
+
+.portraitTop {
+  top: -40px;
+  width: 245px;
+}
+
+.portraitMeta {
+  width: 255px;
+  margin-top: 16px;
+}
+
+.sceneGlow {
+  width: 56%;
+  opacity: .88;
+}
+
+.coreOrb {
+  width: 250px;
+  opacity: .7;
+}
+
+.floatingTile {
+  width: 150px;
+  min-height: 82px;
+  padding: 12px 14px;
+}
+
+.tileCode {
+  left: -4px;
+  top: 10%;
+  transform: translateZ(190px) rotateZ(-4deg);
+}
+
+.tileData {
+  right: -4px;
+  top: 10%;
+  transform: translateZ(198px) rotateZ(4deg);
+}
+
+.tilePython {
+  left: -4px;
+  bottom: 6%;
+  transform: translateZ(180px) rotateZ(2deg);
+}
+
+.tileSecurity {
+  right: -4px;
+  bottom: 6%;
+  transform: translateZ(186px) rotateZ(-2deg);
+}
+
+.orbitRingOne {
+  width: 430px;
+  height: 275px;
+}
+
+.orbitRingTwo {
+  width: 360px;
+  height: 470px;
+}
+
+.orbitRingThree {
+  width: 500px;
+  height: 370px;
+}
+
+@media (max-width: 1100px) {
+  .scene3d {
+    width: min(100%, 620px);
+    height: 590px;
+  }
+
+  .portraitPanel {
+    width: min(52%, 290px);
+    min-width: 250px;
+  }
+
+  .portraitImage {
+    width: min(100%, 275px);
+  }
+
+  .floatingTile {
+    width: 138px;
+    min-height: 78px;
+  }
+
+  .tileCode { left: 0; top: 10%; }
+  .tileData { right: 0; top: 10%; }
+  .tilePython { left: 0; bottom: 6%; }
+  .tileSecurity { right: 0; bottom: 6%; }
+}
+
+@media (max-width: 900px) {
+  .sceneShell {
+    min-height: 640px;
+  }
+
+  .scene3d {
+    width: min(100%, 560px);
+    height: 580px;
+  }
+
+  .portraitPanel {
+    width: min(56%, 285px);
+    min-width: 240px;
+  }
+
+  .portraitImage {
+    width: min(100%, 268px);
+  }
+
+  .portraitMeta {
+    width: 248px;
+  }
+
+  .floatingTile {
+    width: 132px;
+    min-height: 74px;
+    padding: 11px 12px;
+  }
+}
+
+@media (max-width: 760px) {
+  .sceneShell {
+    min-height: 720px;
+  }
+
+  .scene3d {
+    width: min(100%, 430px);
+    height: 690px;
+  }
+
+  .portraitPanel {
+    top: 33%;
+    width: 66%;
+    min-width: 235px;
+  }
+
+  .portraitImage {
+    width: min(100%, 255px);
+  }
+
+  .portraitTop {
+    width: min(90%, 235px);
+  }
+
+  .portraitMeta {
+    width: min(92%, 245px);
+  }
+
+  .floatingTile {
+    width: calc(50% - 12px);
+    min-height: 74px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneShell {
+    min-height: 690px;
+  }
+
+  .scene3d {
+    height: 655px;
+  }
+
+  .portraitPanel {
+    top: 31%;
+    width: 70%;
+    min-width: 220px;
+  }
+
+  .portraitImage {
+    width: min(100%, 240px);
+  }
+
+  .portraitTop {
+    width: min(90%, 225px);
+  }
+
+  .portraitMeta {
+    width: min(94%, 235px);
+  }
+
+  .floatingTile {
+    width: calc(50% - 8px);
+    min-height: 70px;
+  }
+}
+
+
+/* =========================================================
+   V5.1 — PORTRAIT MOVED SLIGHTLY DOWN + BUBBLES GET CLEAR SPACE
+========================================================= */
+
+.scene3d {
+  width: min(100%, 640px);
+  height: 560px;
+}
+
+.sceneGlow {
+  top: 50%;
+  width: 62%;
+}
+
+.coreOrb {
+  width: 270px;
+  top: 53%;
+}
+
+.portraitPanel {
+  top: 47.2%;
+  width: min(47%, 282px);
+  min-width: 238px;
+}
+
+.portraitImage {
+  width: min(100%, 270px);
+}
+
+.portraitTop {
+  top: -36px;
+  width: 236px;
+}
+
+.portraitMeta {
+  width: 245px;
+  margin-top: 12px;
+}
+
+.tileCode {
+  left: -2%;
+  top: 10%;
+  transform: translateZ(185px) rotateZ(-4deg);
+}
+
+.tileData {
+  right: -2%;
+  top: 12%;
+  transform: translateZ(190px) rotateZ(4deg);
+}
+
+.tilePython {
+  left: 0%;
+  bottom: 4%;
+  transform: translateZ(165px) rotateZ(2deg);
+}
+
+.tileSecurity {
+  right: 0%;
+  bottom: 4%;
+  transform: translateZ(170px) rotateZ(-2deg);
+}
+
+.floatingTile {
+  width: 148px;
+  min-height: 80px;
+  padding: 11px 13px;
+}
+
+.floatingTile strong {
+  font-size: 15px;
+}
+
+.floatingTile small {
+  font-size: 8.5px;
+  line-height: 1.25;
+}
+
+@media (max-width: 1100px) {
+  .scene3d {
+    width: min(100%, 600px);
+    height: 550px;
+  }
+
+  .portraitPanel {
+    top: 47%;
+    width: min(49%, 276px);
+    min-width: 232px;
+  }
+
+  .portraitImage {
+    width: min(100%, 262px);
+  }
+
+  .tileCode { left: 0; top: 10%; }
+  .tileData { right: 0; top: 12%; }
+  .tilePython { left: 0; bottom: 4%; }
+  .tileSecurity { right: 0; bottom: 4%; }
+}
+
+@media (max-width: 900px) {
+  .scene3d {
+    width: min(100%, 540px);
+    height: 560px;
+  }
+
+  .portraitPanel {
+    top: 46.5%;
+    width: min(52%, 270px);
+    min-width: 226px;
+  }
+
+  .portraitImage {
+    width: min(100%, 255px);
+  }
+
+  .portraitMeta {
+    width: 238px;
+  }
+
+  .floatingTile {
+    width: 128px;
+    min-height: 74px;
+    padding: 10px 11px;
+  }
+}
+
+@media (max-width: 760px) {
+  .scene3d {
+    width: min(100%, 430px);
+    height: 690px;
+  }
+
+  .portraitPanel {
+    top: 33%;
+    width: 64%;
+    min-width: 228px;
+  }
+
+  .portraitImage {
+    width: min(100%, 246px);
+  }
+
+  .portraitMeta {
+    width: min(92%, 236px);
+  }
+}
+
+@media (max-width: 480px) {
+  .portraitPanel {
+    top: 31.5%;
+    width: 68%;
+    min-width: 214px;
+  }
+
+  .portraitImage {
+    width: min(100%, 232px);
+  }
+
+  .portraitMeta {
+    width: min(94%, 228px);
+  }
+}
+
+
+/* =========================================================
+   V6 FINAL RESPONSIVE SCENE
+   Mobile/tablet portrait stays centered; four tool bubbles keep
+   independent space and retain gentle Motion movement.
+========================================================= */
+
+@media (max-width: 760px) {
+  .heroStage {
+    perspective: none;
+  }
+
+  .sceneShell {
+    min-height: 670px;
+    padding: 12px 0 28px;
+    overflow: visible;
+  }
+
+  .scene3d {
+    position: relative;
+    width: min(100%, 430px);
+    height: 640px;
+    margin-inline: auto;
+    transform-style: preserve-3d;
+    transform-origin: 50% 50%;
+    overflow: visible;
+  }
+
+  /* Central portrait */
+  .portraitPanel {
+    left: 50%;
+    top: 42%;
+    width: 220px;
+    min-width: 0;
+    transform: translate3d(-50%, -50%, 80px);
+    z-index: 6;
+  }
+
+  .portraitImage {
+    width: 220px;
+    max-width: 220px;
+    aspect-ratio: 1;
+    height: auto;
+    margin-inline: auto;
+  }
+
+  .portraitImage img {
+    object-position: 52% 38%;
+  }
+
+  .portraitTop {
+    top: -34px;
+    width: 208px;
+    min-height: 30px;
+    padding: 6px 10px;
+    font-size: 8px;
+  }
+
+  .portraitMeta {
+    width: 224px;
+    min-height: 50px;
+    margin-top: 11px;
+    padding: 8px 10px 8px 12px;
+  }
+
+  .portraitMeta strong {
+    font-size: 13px;
+  }
+
+  .portraitMeta div span {
+    display: block;
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .liveDot {
+    padding: 5px 7px;
+    font-size: 6.5px;
+  }
+
+  /* Four independently positioned tool bubbles */
+  .floatingTile {
+    width: 118px;
+    min-height: 72px;
+    padding: 10px 11px;
+    border-radius: 16px;
+    display: grid !important;
+    align-content: center;
+    gap: 3px;
+    z-index: 8;
+  }
+
+  .floatingTile span {
+    font-size: 7px;
+  }
+
+  .floatingTile strong {
+    font-size: 14px;
+    line-height: 1.05;
+  }
+
+  .floatingTile small {
+    font-size: 7.5px;
+    line-height: 1.2;
+    max-width: none;
+  }
+
+  .tileCode {
+    left: 7px;
+    right: auto;
+    top: 6%;
+    bottom: auto;
+  }
+
+  .tileData {
+    right: 7px;
+    left: auto;
+    top: 6%;
+    bottom: auto;
+  }
+
+  .tilePython {
+    left: 7px;
+    right: auto;
+    top: auto;
+    bottom: 5%;
+  }
+
+  .tileSecurity {
+    right: 7px;
+    left: auto;
+    top: auto;
+    bottom: 5%;
+  }
+
+  /* Scale decorative 3D geometry around the smaller portrait */
+  .sceneGlow {
+    left: 50%;
+    top: 42%;
+    width: 285px;
+    opacity: .76;
+  }
+
+  .coreOrb {
+    left: 50%;
+    top: 42%;
+    width: 215px;
+    opacity: .58;
+  }
+
+  .orbitRingOne {
+    width: 315px;
+    height: 205px;
+  }
+
+  .orbitRingTwo {
+    width: 275px;
+    height: 345px;
+  }
+
+  .orbitRingThree {
+    width: 350px;
+    height: 265px;
+  }
+
+  .sceneHint {
+    display: none;
+  }
+
+  .depthDot {
+    opacity: .85;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneShell {
+    min-height: 640px;
+  }
+
+  .scene3d {
+    width: min(100%, 390px);
+    height: 610px;
+  }
+
+  .portraitPanel {
+    top: 41%;
+    width: 205px;
+  }
+
+  .portraitImage {
+    width: 205px;
+    max-width: 205px;
+  }
+
+  .portraitTop {
+    width: 195px;
+  }
+
+  .portraitMeta {
+    width: 212px;
+  }
+
+  .floatingTile {
+    width: 108px;
+    min-height: 68px;
+    padding: 9px 10px;
+  }
+
+  .tileCode,
+  .tilePython {
+    left: 5px;
+  }
+
+  .tileData,
+  .tileSecurity {
+    right: 5px;
+  }
+
+  .sceneGlow {
+    top: 41%;
+    width: 265px;
+  }
+
+  .coreOrb {
+    top: 41%;
+    width: 200px;
+  }
+
+  .orbitRingOne {
+    width: 290px;
+    height: 188px;
+  }
+
+  .orbitRingTwo {
+    width: 252px;
+    height: 320px;
+  }
+
+  .orbitRingThree {
+    width: 325px;
+    height: 245px;
+  }
+}
+
+@media (max-width: 380px) {
+  .sceneShell {
+    min-height: 620px;
+  }
+
+  .scene3d {
+    width: 100%;
+    height: 590px;
+  }
+
+  .portraitPanel {
+    top: 40.5%;
+    width: 192px;
+  }
+
+  .portraitImage {
+    width: 192px;
+    max-width: 192px;
+  }
+
+  .portraitTop {
+    width: 184px;
+  }
+
+  .portraitMeta {
+    width: 202px;
+  }
+
+  .floatingTile {
+    width: 101px;
+    min-height: 64px;
+    padding: 8px 9px;
+  }
+
+  .floatingTile strong {
+    font-size: 13px;
+  }
+
+  .floatingTile small {
+    font-size: 7px;
+  }
+
+  .tileCode,
+  .tilePython {
+    left: 3px;
+  }
+
+  .tileData,
+  .tileSecurity {
+    right: 3px;
+  }
+}
+
+
+/* =========================================================
+   V6.1 — BALANCED ORBIT LAYOUT
+   Portrait centered in the scene.
+   Four bubbles placed at equal visual distance around it.
+========================================================= */
+
+.scene3d {
+  width: min(100%, 660px);
+  height: 590px;
+  margin-inline: auto;
+}
+
+.portraitPanel {
+  left: 50%;
+  top: 48%;
+  width: min(46%, 276px);
+  min-width: 238px;
+  transform: translate3d(-50%, -50%, 96px);
+  z-index: 7;
+}
+
+.portraitImage {
+  width: min(100%, 266px);
+  max-width: 266px;
+  margin-inline: auto;
+}
+
+.portraitImage img {
+  object-position: 52% 40%;
+}
+
+.portraitTop {
+  top: -36px;
+  width: 238px;
+}
+
+.portraitMeta {
+  width: 248px;
+  margin-top: 12px;
+}
+
+.floatingTile {
+  width: 146px;
+  min-height: 80px;
+  padding: 11px 13px;
+  z-index: 8;
+}
+
+.floatingTile strong {
+  font-size: 15px;
+}
+
+.floatingTile small {
+  font-size: 8.5px;
+  line-height: 1.22;
+}
+
+/* Equal-distance placement around the circle */
+.tileCode {
+  left: calc(50% - 250px);
+  top: calc(48% - 162px);
+  bottom: auto;
+  right: auto;
+  transform: translateZ(180px) rotateZ(-4deg);
+}
+
+.tileData {
+  left: calc(50% + 104px);
+  top: calc(48% - 162px);
+  bottom: auto;
+  right: auto;
+  transform: translateZ(180px) rotateZ(4deg);
+}
+
+.tilePython {
+  left: calc(50% - 250px);
+  top: calc(48% + 120px);
+  bottom: auto;
+  right: auto;
+  transform: translateZ(170px) rotateZ(2deg);
+}
+
+.tileSecurity {
+  left: calc(50% + 104px);
+  top: calc(48% + 120px);
+  bottom: auto;
+  right: auto;
+  transform: translateZ(170px) rotateZ(-2deg);
+}
+
+/* Keep orbit and glow centered on the portrait */
+.sceneGlow {
+  left: 50%;
+  top: 48%;
+  width: 320px;
+}
+
+.coreOrb {
+  left: 50%;
+  top: 48%;
+  width: 228px;
+}
+
+.orbitRingOne {
+  width: 345px;
+  height: 220px;
+}
+
+.orbitRingTwo {
+  width: 295px;
+  height: 380px;
+}
+
+.orbitRingThree {
+  width: 390px;
+  height: 290px;
+}
+
+/* Laptop / tablet landscape */
+@media (max-width: 1100px) {
+  .scene3d {
+    width: min(100%, 610px);
+    height: 570px;
+  }
+
+  .portraitPanel {
+    width: min(47%, 264px);
+  }
+
+  .portraitImage {
+    width: min(100%, 254px);
+    max-width: 254px;
+  }
+
+  .tileCode {
+    left: calc(50% - 228px);
+    top: calc(48% - 156px);
+  }
+
+  .tileData {
+    left: calc(50% + 92px);
+    top: calc(48% - 156px);
+  }
+
+  .tilePython {
+    left: calc(50% - 228px);
+    top: calc(48% + 114px);
+  }
+
+  .tileSecurity {
+    left: calc(50% + 92px);
+    top: calc(48% + 114px);
+  }
+}
+
+@media (max-width: 900px) {
+  .scene3d {
+    width: min(100%, 540px);
+    height: 560px;
+  }
+
+  .portraitPanel {
+    width: min(49%, 248px);
+    top: 47%;
+  }
+
+  .portraitImage {
+    width: min(100%, 238px);
+    max-width: 238px;
+  }
+
+  .portraitTop {
+    width: 218px;
+  }
+
+  .portraitMeta {
+    width: 228px;
+  }
+
+  .floatingTile {
+    width: 130px;
+    min-height: 74px;
+    padding: 10px 11px;
+  }
+
+  .tileCode {
+    left: calc(50% - 205px);
+    top: calc(47% - 145px);
+  }
+
+  .tileData {
+    left: calc(50% + 75px);
+    top: calc(47% - 145px);
+  }
+
+  .tilePython {
+    left: calc(50% - 205px);
+    top: calc(47% + 106px);
+  }
+
+  .tileSecurity {
+    left: calc(50% + 75px);
+    top: calc(47% + 106px);
+  }
+
+  .sceneGlow {
+    top: 47%;
+    width: 295px;
+  }
+
+  .coreOrb {
+    top: 47%;
+    width: 210px;
+  }
+}
+
+/* Mobile remains centered and balanced */
+@media (max-width: 760px) {
+  .scene3d {
+    width: min(100%, 430px);
+    height: 640px;
+  }
+
+  .portraitPanel {
+    left: 50%;
+    top: 42%;
+    width: 220px;
+    min-width: 0;
+    transform: translate3d(-50%, -50%, 80px);
+  }
+
+  .portraitImage {
+    width: 220px;
+    max-width: 220px;
+  }
+
+  .portraitTop {
+    width: 208px;
+  }
+
+  .portraitMeta {
+    width: 224px;
+  }
+
+  .floatingTile {
+    width: 118px;
+    min-height: 72px;
+    padding: 10px 11px;
+  }
+
+  .tileCode {
+    left: calc(50% - 169px);
+    top: calc(42% - 142px);
+  }
+
+  .tileData {
+    left: calc(50% + 51px);
+    top: calc(42% - 142px);
+  }
+
+  .tilePython {
+    left: calc(50% - 169px);
+    top: calc(42% + 100px);
+  }
+
+  .tileSecurity {
+    left: calc(50% + 51px);
+    top: calc(42% + 100px);
+  }
+
+  .sceneGlow {
+    left: 50%;
+    top: 42%;
+    width: 285px;
+  }
+
+  .coreOrb {
+    left: 50%;
+    top: 42%;
+    width: 215px;
+  }
+}
+
+@media (max-width: 480px) {
+  .scene3d {
+    width: min(100%, 390px);
+    height: 610px;
+  }
+
+  .portraitPanel {
+    top: 41%;
+    width: 205px;
+  }
+
+  .portraitImage {
+    width: 205px;
+    max-width: 205px;
+  }
+
+  .portraitTop {
+    width: 195px;
+  }
+
+  .portraitMeta {
+    width: 212px;
+  }
+
+  .floatingTile {
+    width: 108px;
+    min-height: 68px;
+    padding: 9px 10px;
+  }
+
+  .tileCode {
+    left: calc(50% - 155px);
+    top: calc(41% - 136px);
+  }
+
+  .tileData {
+    left: calc(50% + 47px);
+    top: calc(41% - 136px);
+  }
+
+  .tilePython {
+    left: calc(50% - 155px);
+    top: calc(41% + 94px);
+  }
+
+  .tileSecurity {
+    left: calc(50% + 47px);
+    top: calc(41% + 94px);
+  }
+
+  .sceneGlow {
+    top: 41%;
+    width: 265px;
+  }
+
+  .coreOrb {
+    top: 41%;
+    width: 200px;
+  }
+}
