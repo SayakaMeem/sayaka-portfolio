@@ -22,13 +22,18 @@ const securityHeaders = [
 ];
 
 const nextConfig = {
-  output: "standalone",
   reactStrictMode: true,
   poweredByHeader: false,
   compress: true,
+
   async headers() {
-    return [{ source: "/(.*)", headers: securityHeaders }];
-  }
+    return [
+      {
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
